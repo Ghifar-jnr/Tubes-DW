@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Stay GAPPH VILLA</title>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="stay.css">
+    </head>
+<body>
+
+<!-- Navbar -->
+<header id="navbar" class="bg-[#DDD0C0] fixed top-0 left-0 w-full z-50 shadow-md bg-opacity-60 backdrop-filter backdrop-blur-sm font-['Lusitana']">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+        <div>
+            <a href="index.html" class="hover:opacity-80">
+                <img class="w-16" src="logo1.png" alt="Logo">
+            </a>
+        </div>
+
+        <div id="nav-links" class="hidden md:flex items-center space-x-20">
+            <a href="#stay" class="text-[#574A21] hover:text-[#9C7701] transition duration-300 font-['Lusitana']">STAY</a>
+            <a href="about.html" class="text-[#574A21] hover:text-[#9C7701] transition duration-300 font-['Lusitana']">ABOUT</a>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <a href="book.html" class="bg-white text-[#574A21] px-5 py-2 rounded-full hover:bg-[#9C7701] hover:text-white transition duration-300 font-['Lusitana']">
+                BOOK NOW
+            </a>
+            <ion-icon name="menu" onclick="onToggleMenu()" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+        </div>
+    </nav>
+
+    <!-- Mobile-->
+    <div id="mobile-menu" class="hidden fixed right-0 w-[60%] h-[458px] bg-[#DDD0C0] z-40">
+        <div class="flex justify-end p-4">
+            <ion-icon name="close" onclick="onToggleMenu()" class="text-4xl cursor-pointer"></ion-icon>
+        </div>
+        <ul class="flex flex-col items-center space-y-8 mt-16">
+            <li><a href="stay.html" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">STAY</a></li>
+            <div class="w-[60%] h-1 bg-[#574A21] mx-auto my-4"></div>
+            <li><a href="about.html" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">ABOUT</a></li>
+        </ul>
+    </div>
+</header>
+
+<!--villa-->
+<section id="stay" class="relative">
+        <div class="carousel">
+            <div class="list">
+                <div class="item" style="background-image: url(https://asset.kompas.com/crops/5IVeE9MjpfvHfkC4ICmd1ySeP94=/125x63:875x563/1200x800/data/photo/2023/02/26/63fb51e0c37d2.jpg);">
+                    <div class="content">
+                        <div class="title">THE RUSSI</div>
+                        <div class="name">VILLA</div>
+                        <div class="btn">
+                            <button class="px-4 py-2 text-white rounded  transition no-underline">
+                                <a href="russi.html">See More</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url(http://pix3.agoda.net/hotelimages/680592/0/900ae1a932aaa7ee3c6b861111994a2e.jpg);">
+                    <div class="content">
+                        <div class="title">VILLA</div>
+                        <div class="name">SENERITAS</div>
+                        <div class="btn">
+                            <button class="px-4 py-2 text-white rounded  transition no-underline">
+                                <a href="serenitas.html">See More</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('https://www.villadibali.net/villa-images/photo/villa-mewah-pemandangan-sawah-canggu_big.jpg');">
+                    <div class="content">
+                        <div class="title">VILLA</div>
+                        <div class="name">PANORAMIK</div>
+                        <div class="btn">
+                            <button class="px-4 py-2 text-white rounded  transition no-underline">
+                                <a href="panoramik.html">See More</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item" style="background-image: url(https://www.villadibali.net/villa-images/photo/villa-6-kamar-tidur-mewah-nyaman-hanya-500-meter-pantai_big.jpg);">
+                    <div class="content">
+                        <div class="title">THE</div>
+                        <div class="name">VILLA's</div>
+                        <div class="btn">
+                            <button class="px-4 py-2 text-white rounded  transition no-underline">
+                                <a href="The Villa's.html">See More</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrows">
+                <button class="prev"> <i class="fa-solid fa-chevron-left"></i></button>
+                <button class="next"> <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="timeRunning"></div>
+        </div>
+    </section>
+    
+        <script src="stay.js"></script>
+    </body>
+</html>

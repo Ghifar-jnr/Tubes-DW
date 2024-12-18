@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAPPH VILLA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="russi.css">
+</head>
+
+<body class="bg-[#F6EDEA] text-[#574A21]">
+<!-- Navbar -->
+<header id="navbar" class="bg-[#DDD0C0] fixed top-0 left-0 w-full z-50 shadow-md bg-opacity-60 backdrop-filter backdrop-blur-sm font-['Lusitana']">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+        <div>
+            <a href="index.html" class="hover:opacity-80">
+                <img class="w-16" src="logo1.png" alt="Logo">
+            </a>
+        </div>
+
+        <div id="nav-links" class="hidden md:flex items-center space-x-20">
+            <a href="stay.html" class="text-[#574A21] hover:text-[#9C7701] transition duration-300 font-['Lusitana']">STAY</a>
+            <a href="about.html" class="text-[#574A21] hover:text-[#9C7701] transition duration-300 font-['Lusitana']">ABOUT</a>
+            <a href="#contact" class="text-[#574A21] hover:text-[#9C7701] transition duration-300 font-['Lusitana']">CONTACT US</a>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <a href="book.html" class="bg-white text-[#574A21] px-5 py-2 rounded-full hover:bg-[#9C7701] hover:text-white transition duration-300 font-['Lusitana']">
+                BOOK NOW
+            </a>
+            <ion-icon name="menu" onclick="onToggleMenu()" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+        </div>
+    </nav>
+
+    <!-- Mobile-->
+    <div id="mobile-menu" class="hidden fixed right-0 w-[60%] h-[458px] bg-[#DDD0C0] z-40">
+        <div class="flex justify-end p-4">
+            <ion-icon name="close" onclick="onToggleMenu()" class="text-4xl cursor-pointer"></ion-icon>
+        </div>
+        <ul class="flex flex-col items-center space-y-8 mt-16">
+            <li><a href="stay.html" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">STAY</a></li>
+            <div class="w-[60%] h-1 bg-[#574A21] mx-auto my-4"></div>
+            <li><a href="about.html" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">ABOUT</a></li>
+            <div class="w-[60%] h-1 bg-[#574A21] mx-auto my-4"></div>
+            <li><a href="#contact" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">CONTACT US</a></li>
+        </ul>
+    </div>
+</header>
+       
+<!-- Hero Section -->
+<section class="h-screen bg-fixed bg-cover bg-center opacity-[80%]" style="background-image: url('https://asset.kompas.com/crops/5IVeE9MjpfvHfkC4ICmd1ySeP94=/125x63:875x563/1200x800/data/photo/2023/02/26/63fb51e0c37d2.jpg');">
+    <div class="flex items-center justify-center h-full  bg-opacity-50">
+        <h1 class="text-5xl text-center md:text-7xl font-bold text-white font-['Orelega']">THE RUSSI VILLA</h1>
+    </div>
+</section>
+  
+<!-- Fasilitas -->
+<section class="animate-slide-in content bg-[#F7F4F1] py-12 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-8">
+
+            <div class="text-section lg:w-1/2">
+                <h1 class="text-4xl md:text-3xl font-bold text-[#574A21] mb-4 font-['Orelega']">FASILITAS UTAMA</h1>
+                <ul class="list-disc pl-5 text-xl text-[#574A21] leading-relaxed mb-6 font-['Lusitana']">
+                    <li class="mb-6">
+                    <strong class="text-3xl md:text-2xl font-['Orelega']">Kolam Renang Pribadi</strong><br> 
+                    Kolam renang modern dengan desain elegan, dikelilingi taman tropis dan kursi santai. Area ini ideal untuk bersantai atau menikmati momen bersama keluarga dan teman.
+                    </li>
+                    <li class="mb-6">
+                    <strong class="text-3xl md:text-2xl font-['Orelega']">Kamar Tidur</strong> <br>
+                    Dilengkapi dengan tempat tidur king-size, linen berkualitas tinggi, dan desain modern. Terdapat lampu gantung minimalis dan dekorasi kayu yang menciptakan suasana hangat. Kamar tidur memiliki akses ke area outdoor dengan jendela besar yang memberikan pencahayaan alami.
+                    </li>
+                    <li class="mb-6">
+                    <strong class="text-3xl md:text-2xl font-['Orelega']">Dapur</strong> <br>
+                    Meja makan kayu dengan kursi rotan, serta peralatan dapur modern seperti kompor, kulkas, dan alat makan. Cocok untuk memasak dan menikmati makanan bersama.
+                    </li>
+                    <li class="mb-6">
+                    <strong class="text-3xl md:text-2xl font-['Orelega']">Ruang Tamu</strong><br> 
+                    Ruang tamu yang terang dan nyaman, dilengkapi sofa besar dengan desain modern. Jendela kaca besar memberikan pemandangan outdoor sekaligus menciptakan suasana terbuka.
+                    </li>
+                    <li class="mb-6">
+                    <strong class="text-3xl md:text-2xl font-['Orelega']">Kamar Mandi</strong> <br>
+                    Setiap kamar mandi memiliki bathtub modern bergaya spa, shower dengan aliran air panas/dingin, dan dekorasi minimalis. Cermin besar dan wastafel ganda tersedia untuk kemudahan tamu. Beberapa kamar mandi memiliki akses outdoor, memberikan suasana alami seperti mandi di tengah alam.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="image-gallery lg:w-1/2 grid grid-rows-3 grid-cols-2 gap-4">
+                <img class="w-full aspect-square object-cover rounded-lg shadow-lg" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/422819426.jpg?k=a7804da8e4fa0da0b1b6d80c4c2c7b0be5ae1aacccff12d115191bd488af641b&o=&hp=1" alt="Kolam Renang">
+                <img class="w-full aspect-square object-cover rounded-lg shadow-lg" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/423076530.jpg?k=6671398b756acc88f943dbd36c26dd8b00a3a070772253a9b967b9a64370a025&o=&hp=1" alt="Kamar Tidur">
+                <img class="w-full aspect-square object-cover rounded-lg shadow-lg" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/390744980.jpg?k=c5e708de3e39c9ac809d6c672b4fca209c6c57e48e310834a956aded1a7c17eb&o=&hp=1" alt="Dapur">
+                <img class="w-full aspect-square object-cover rounded-lg shadow-lg" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/425135584.jpg?k=bad2b799308d0bcab215b0a5aab9398f6adce6cb10b2814d11799ad63a591abd&o=&hp=1" alt="Ruang Tamu">
+                <img class="w-full aspect-square object-cover rounded-lg shadow-lg" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/425135851.jpg?k=17f129141f91f3f035652db2310db6d1fd9b73dde6a5cb8380c971ede6db157d&o=&hp=1" alt="Kamar Mandi">
+                <img class="w-full aspect-square object-cover rounded-lg shadow-lg" src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/423033506.jpg?k=997b27829f701af30bd08576a8f86d843279fef99f21a8db26dbd12621093a28&o=&hp=1" alt="Outdoor Bath">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="animate-slide-in bg-[#F7F4F1] py-12 px-4 md:px-8 border-t-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Bagian Gambar -->
+        <div class="image-gallery grid gap-4">
+            <!-- untuk gambar besar -->
+            <img class="row-span-2 w-full h-[300px] lg:h-[400px] object-cover rounded-lg shadow-lg" 
+                src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/422819426.jpg?k=a7804da8e4fa0da0b1b6d80c4c2c7b0be5ae1aacccff12d115191bd488af641b&o=&hp=1" 
+                alt="Kolam Renang">
+            
+            <!-- untuk gambar kecil -->
+            <div class="grid grid-cols-2 gap-4">
+                <img class="w-full h-[150px] object-cover rounded-lg shadow-lg" 
+                    src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/423076530.jpg?k=6671398b756acc88f943dbd36c26dd8b00a3a070772253a9b967b9a64370a025&o=&hp=1" 
+                    alt="Kamar Tidur">
+                <img class="w-full h-[150px] object-cover rounded-lg shadow-lg" 
+                    src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/390744980.jpg?k=c5e708de3e39c9ac809d6c672b4fca209c6c57e48e310834a956aded1a7c17eb&o=&hp=1" 
+                    alt="Ruang Tamu">
+            </div>
+
+            <!-- Harga di bawah gambar -->
+            <p class="text-3xl font-bold text-[#574A21] text-center mt-6 lg:mt-4">
+                Rp 1.500.000 / Malam
+            </p>
+        </div>
+
+        <!-- Bagian Teks -->
+        <div class="lg:col-span-2 pl-2">
+            <h1 class="text-4xl md:text-3xl font-bold text-[#574A21] mb-4 font-['Orelega']">KAPASITAS DAN TATA RUANG</h1>
+            <ul class="list-disc pl-5 text-2xl md:text-xl text-[#574A21] leading-relaxed mb-6 font-['Lusitana']">
+                <li class="mb-6">
+                 Kapasitas hingga 20 - 30 orang 
+                </li>
+                 <li class="mb-6">
+                 4 kamar tidur masing masing dilengkapi dengan AC, lemari pakaian, dan tempat tidur besar 
+                </li>
+                 <li class="mb-6">
+                 4 kamar mandi, 2 di dalam kamar dan 2 kamar mandi luar
+                 </li>
+            </ul>
+            <h2 class="text-3xl md:text-3xl font-bold text-[#574A21] mb-4 font-['Orelega']">FASILITAS TAMBAHAN</h2>
+            <ul class="list-disc pl-5 text-2xl md:text-xl text-[#574A21] leading-relaxed mb-6 font-['Lusitana']">
+                <li class="mb-6">
+                <strong class="text-2xl md:text-2xl font-['Orelega']">BBQ Set</strong> <br>
+                Disediakan untuk acara makan malam di area outdoor.  
+            </li>
+                <li class="mb-6">
+                <strong class="text-2xl md:text-2xl font-['Orelega']">Layanan Housekeeping Harian</strong> <br>
+                Untuk menjaga kebersihan villa selama masa tinggal Anda.  
+            </li>
+                <li class="mb-6">
+                <strong class="text-2xl md:text-2xl font-['Orelega']">Antar-Jemput Bandara</strong> <br>
+                Layanan opsional untuk memudahkan perjalanan Anda.  
+            </li>
+                <li class="mb-6">
+                <strong class="text-2xl md:text-2xl font-['Orelega']">Paket Aktivitas</strong> <br>
+                Membantu mengatur pengalaman unik seperti tur lokal, aktivitas air, atau kelas memasak.  
+            </li>
+                <li class="mb-6">
+                <strong class="text-2xl md:text-2xl font-['Orelega']">Wi-Fi Berkecepatan Tinggi</strong> <br>
+                Mendukung kebutuhan tamu untuk bekerja atau hiburan streaming.  
+            </li>
+                <li class="mb-6">
+                <strong class="text-2xl md:text-2xl font-['Orelega']">Karaoke</strong> <br>
+                Fasilitas karaoke untuk menghidupkan suasana malam bersama keluarga atau teman.  
+            </li>
+                <li class="mb-6">
+                <strong class="text-2xl md:text-2xl font-['Orelega']">Biliar</strong> <br>
+                Villa dilengkapi meja biliar untuk menambah hiburan selama menginap.  
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--galery-->  
+<div class="animate-slide-in mx-auto p-4 bg-[#F7F4F1]">
+    <div class="relative">
+        <button id="prev-slide" class="absolute top-1/2 left-0 -translate-y-1/2 bg-[#F7F4F1] p-2 rounded-full shadow-md z-10 hover:bg-[#DDD0C0]">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+        </button>
+        <div class="gallery-sec">
+            <h2 class="text-left text-5xl font-bold mb-4 font-['Orelega']">Gallery</h2>
+            <div id="image-list" class="image-list flex gap-4 overflow-x-auto relative">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/425133099.jpg?k=6690189171bfc7e68dc87ca57ba0d93d558658c8f3d5e523e8f8dfe3289346f9&o=&hp=1" alt ="image 1" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/425135946.jpg?k=7e7144e876bcf91a1fd4de41fb82a12e86ec86a03c7daa38219e796f95bce538&o=&hp=1" alt="image 2" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/423033506.jpg?k=997b27829f701af30bd08576a8f86d843279fef99f21a8db26dbd12621093a28&o=&hp=1" alt="image 3" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/423033699.jpg?k=f6adacadb6c775288b367cd0bab197c3468a022daa0cec369b62f536a54920e7&o=&hp=1" alt="image 4" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/425135584.jpg?k=bad2b799308d0bcab215b0a5aab9398f6adce6cb10b2814d11799ad63a591abd&o=&hp=1" alt="image 5" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/425135753.jpg?k=c497f99af12dc075cf09a623ff6b1640818faf4e5885f50656a20ec99833b421&o=&hp=1" alt="image 6" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/425135851.jpg?k=17f129141f91f3f035652db2310db6d1fd9b73dde6a5cb8380c971ede6db157d&o=&hp=1" alt="image 7" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/425135895.jpg?k=45b3c7afa4634c16b292d7aa380c03fe7c68c707fd6c45762fa2f136e3ef7c4a&o=&hp=1" alt="image 8" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/425135880.jpg?k=57131ef15c72598b79de867ee12c5c16ee44816dfb88e4b0c21c44a3bfdc6109&o=&hp=1" alt="image 9" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/425136038.jpg?k=eba3bb0444522ad61b5389dbd79d57222e6386e8048a574625ae28a161d6d72a&o=&hp=1" alt="image 10" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/413506675.jpg?k=e25b95112492c6089b44d878e0d45ce6f54d0740301e567bad809e06a6c39157&o=&hp=1" alt="image 11" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/425135668.jpg?k=41afe9f513b648980469775575b6b6a7b141053baf3f46a7a10d0278ee6f224c&o=&hp=1" alt="image 12" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/425135644.jpg?k=82cfb27da7e837e549efeaf9e7351bdb06b590b1fd0986023838d79bbbf433a6&o=&hp=1" alt="image 13" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/413512237.jpg?k=4ce9d32272c908a5886c53ddb0ae6796e6900fe26103427930c2654c8861f968&o=&hp=1" alt="image 14" class="image-item rounded-lg shadow-md w-64 h-48 object-cover flex-shrink-0">
+            </div>
+        </div>
+        <button id="next-slide" class="absolute top-1/2 right-0 -translate-y-1/2 bg-[#F7F4F1] p-2 rounded-full shadow-md z-10 hover:bg-[#DDD0C0]">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        </button>
+    </div>
+</div>
+
+<!--rating-->
+<main class="container mx-auto mt-6 p-4 bg-[#EDE7E0]">
+    <h2 class="text-2xl font-['Lusitana'] mb-4">Ulasan Tamu</h2>
+    <div id="reviews" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    </div>
+</main>
+
+<!-- Contact -->
+<footer id="contact" class="bg-[#DDD0C0] text-[#574A21] py-10">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+
+        <div class="flex flex-col items-center justify-center text-center space-y-4 md:w-1/3">
+            <img src="logo1.png" alt="Logo" class="h-16 mx-auto">
+            <div class="flex justify-center space-x-6">
+                <a href="https://www.instagram.com/divachyaaa" target="_blank" aria-label="Instagram">
+                    <img src="ig.png" alt="Instagram" class="h-8 w-8 hover:scale-110 transition-transform">
+                </a>
+                <a href="https://youtube.com/@divacahya4015" target="_blank" aria-label="YouTube">
+                    <img src="yt.png" alt="YouTube" class="h-8 w-8 hover:scale-110 transition-transform">
+                </a>
+                <a href="https://www.tiktok.com/@dwilliu" target="_blank" aria-label="TikTok">
+                    <img src="tiktok.png" alt="TikTok" class="h-8 w-8 hover:scale-110 transition-transform">
+                </a>
+            </div>
+        </div>
+
+        <div class="hidden md:block h-32 w-px bg-[#574A21]"></div>
+
+        <div class="text-center md:text-left md:w-1/3">
+            <h3 class="font-bold text-3xl mb-4 font-['Orelega'] text-center md:text-left">
+                Contact
+            </h3>
+            <p class="text-xl">
+                <a href="https://maps.app.goo.gl/1A8tiwkb8FiotBtf8" class="hover:text-[#9C7701] font-['Lusitana']">
+                    Alamat: JL. Raya Ubud
+                </a>
+            </p>
+            <p class="text-xl">
+                <a href="mailto:GAPPH.21@gmail.com" class="hover:text-[#9C7701] font-['Lusitana']">
+                    Email: GAPPH.21@gmail.com
+                </a>
+            </p>
+            <p class="text-xl font-['Lusitana']">No. Telepon: (021) 99123</p>
+        </div>
+    </div>
+
+    <!-- Footer Bawah -->
+    <div class="text-center text-sm mt-10 text-[#574A21] font-['Lusitana']">
+        © 2024 GAPPH VILLA. All Rights Reserved
+    </div>
+</footer>
+
+
+<script>
+//ulasan
+document.addEventListener("DOMContentLoaded", () => {
+  const reviews = [
+    {
+      stars: 5,
+      comment: "Pengalaman menginap yang luar biasa! Villa ini benar-benar sempurna – bersih, nyaman, dan sangat estetis. Fasilitas lengkap, suasana tenang, dan pelayanannya luar biasa. Pasti akan kembali lagi!"
+    },
+    {
+      stars: 5,
+      comment: "Sangat recommended! Semua fasilitas sesuai deskripsi, bahkan lebih bagus dari foto. Staf ramah dan sangat membantu. Terima kasih untuk pengalaman menginap yang menyenangkan!"
+    },
+    {
+      stars: 4,
+      comment: "Pengalaman menginap yang menyenangkan. Dekorasi villa sangat indah dan suasananya nyaman. Akan lebih sempurna jika [misalnya sarapan tersedia]."
+    }
+  ];
+
+  const reviewsContainer = document.getElementById("reviews");
+
+  reviews.forEach(review => {
+    const starsHtml = `
+      ${"★".repeat(review.stars).split('').map(star => `<span class="text-yellow-500">${star}</span>`).join('')}
+      ${"☆".repeat(5 - review.stars).split('').map(star => `<span class="text-gray-300">${star}</span>`).join('')}
+    `;
+
+    const reviewCard = `
+      <div class="bg-white p-6 rounded-lg shadow-md font-[Lusitana]">
+        <div class="stars text-xl mb-2">${starsHtml}</div>
+        <hr class="my-2">
+        <p class="text-gray-700 mt-4"><strong>Komentar</strong></p>
+        <p class="italic">"${review.comment}"</p>
+      </div>
+    `;
+    reviewsContainer.innerHTML += reviewCard;
+  });
+});
+
+const prevButton = document.getElementById('prev-slide');
+    const nextButton = document.getElementById('next-slide');
+    const imageList = document.getElementById('image-list');
+
+    function scrollGallery(direction) {
+        const scrollAmount = 300; 
+        imageList.scrollBy({
+            left: direction === 'next' ? scrollAmount : -scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+
+    prevButton.addEventListener('click', () => scrollGallery('prev'));
+    nextButton.addEventListener('click', () => scrollGallery('next'));
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            scrollGallery('prev');
+        } else if (e.key === 'ArrowRight') {
+            scrollGallery('next');
+        }   
+    });
+
+    [prevButton, nextButton].forEach((button) => {
+        button.addEventListener('mouseenter', () => button.classList.add('bg-[#DDD0C0]'));
+        button.addEventListener('mouseleave', () => button.classList.remove('bg-[#DDD0C0]'));
+    });function onToggleMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+}
+
+function closeMenuOnClick() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.add('hidden'); // Tambahkan kembali class "hidden"
+}
+
+// Tambahkan event listener ke semua tautan di dalam menu
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', closeMenuOnClick);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const elementsToAnimate = document.querySelectorAll(".animate-slide-in");
+    elementsToAnimate.forEach((element) => {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(20px)";
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    element.style.transition = "opacity 1s ease-out, transform 1s ease-out";
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(element);
+    });
+});
+
+</script>
+</body></html>

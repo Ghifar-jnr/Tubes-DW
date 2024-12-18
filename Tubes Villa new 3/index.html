@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAPPH VILLA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#EDE7E0] h-screen">
+<!-- Navbar -->
+<header id="navbar" class="bg-[#DDD0C0] fixed top-0 left-0 w-full z-50 shadow-md bg-opacity-60 backdrop-filter backdrop-blur-sm font-['Lusitana']">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+        <div>
+            <a href="#" class="hover:opacity-80">
+                <img class="w-16" src="logo1.png" alt="Logo">
+            </a>
+        </div>
+
+        <div id="nav-links" class="hidden md:flex items-center space-x-20">
+            <a href="#home" class="text-[#574A21] hover:text-[#9C7701] transition duration-300 font-['Lusitana']">HOME</a>
+            <a href="#explore" class="text-[#574A21] hover:text-[#9C7701] transition duration-300 font-['Lusitana']">EXPLORE</a>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <a href="book.html" class="bg-white text-[#574A21] px-5 py-2 rounded-full hover:bg-[#9C7701] hover:text-white transition duration-300 font-['Lusitana']">
+                BOOK NOW
+            </a>
+            <ion-icon name="menu" onclick="onToggleMenu()" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+        </div>
+    </nav>
+
+    <!-- Mobile-->
+    <div id="mobile-menu" class="hidden fixed right-0 w-[60%] h-[458px] bg-[#DDD0C0] z-40">
+        <div class="flex justify-end p-4">
+            <ion-icon name="close" onclick="onToggleMenu()" class="text-4xl cursor-pointer"></ion-icon>
+        </div>
+        <ul class="flex flex-col items-center space-y-8 mt-16">
+            <li><a href="#home" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">HOME</a></li>
+            <div class="w-[60%] h-1 bg-[#574A21] mx-auto my-4"></div>
+            <li><a href="#explore" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">EXPLORE</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="relative">
+        <video class="relative top-0 inset-0 left-0 w-full z-[-10] h-[500px] object-cover md:w-full md:h-full xl:w-full xl:h-full" autoplay loop muted playsinline>
+            <source src="https://videos.pexels.com/video-files/8306904/8306904-hd_1920_1080_25fps.mp4" type="video/mp4">
+        </video>
+</section>
+
+<!-- Welcome Section -->
+<section id="explore" class="relative text-center py-16 px-4 bg-[#EDE7E0]">  
+    <div class="animate-slide-in relative z-10 max-w-3xl mx-auto">
+        <h1 class="text-3xl sm:text-5xl font-bold text-[#574A21] mb-4 font-['Orelega'] drop-shadow-lg">
+            Welcome to <span class="text-[#8b6f3d] font-['Orelega One']">‘GAPPH VILLA’</span>
+        </h1>
+        <p class="text-xl sm:text-xl text-[#574A21] font-['Lusitana'] leading-relaxed">
+            Discover a hidden paradise designed to provide a special experience. GAPPH offers 
+            the perfect combination of modern comfort, natural beauty, and classy service.
+        </p>
+    </div>
+    <div class="animate-slide-in relative z-10 mt-8 flex justify-center items-center">
+        <div class="h-[2px] w-24 bg-[#574A21]"></div>
+        <span class="mx-4 text-[#574A21] text-sm font-semibold font-['Orelega']">OR</span>
+        <div class="h-[2px] w-24 bg-[#574A21]"></div>
+    </div>
+    <div class="mt-8">
+        <a href="about.html" class="relative inline-block px-8 py-3 text-white font-semibold rounded-lg bg-[#8b6f3d] hover:bg-[#574A21] transition-all duration-300 shadow-md hover:shadow-lg font-['Orelega']">
+            Explore Now
+        </a>
+    </div>
+</section>
+
+<!-- Script -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const elementsToAnimate = document.querySelectorAll(".animate-slide-in");
+    elementsToAnimate.forEach((element) => {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(20px)";
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    element.style.transition = "opacity 1s ease-out, transform 1s ease-out";
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(element);
+    });
+});
+
+function onToggleMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+}
+
+function closeMenuOnClick() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.add('hidden'); // Tambahkan kembali class "hidden"
+}
+
+// Tambahkan event listener ke semua tautan di dalam menu
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', closeMenuOnClick);
+});
+</script>
+</body>
+</html>

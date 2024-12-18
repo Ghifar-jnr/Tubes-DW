@@ -1,0 +1,30 @@
+html{
+    height: 100%;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+.container {
+    width: 100%;
+}
+.image-list {
+    padding-bottom: 1rem; /* Menambahkan ruang di bawah gambar untuk scrollbar */
+  }
+  
+  .image-list::-webkit-scrollbar {
+    height: 8px; /* Atur tinggi scrollbar */
+  }
+  
+  .image-list::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Warna background track scrollbar */
+    border-radius: 10px;
+  }
+  
+  .image-list::-webkit-scrollbar-thumb {
+    background: #837360; 
+    border-radius: 10px; 
+  }
+  
+  .image-list::-webkit-scrollbar-thumb:hover {
+    background: #574A21; 
+  }
+
