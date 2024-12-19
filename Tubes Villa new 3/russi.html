@@ -204,11 +204,41 @@
 </div>
 
 <!--rating-->
-<main class="container mx-auto mt-6 p-4 bg-[#EDE7E0]">
-    <h2 class="text-2xl font-['Lusitana'] mb-4">Ulasan Tamu</h2>
+  <!-- Container Ulasan -->
+  <section class="container mx-auto mt-6 p-4 bg-[#EDE7E0] rounded-lg shadow-md">
+    <h2 class="text-3xl font-bold text-[#574A21] mb-4 text-center font-['Lusitana']">Ulasan Tamu</h2>
     <div id="reviews" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Ulasan akan ditambahkan secara dinamis -->
     </div>
-</main>
+  </section>
+
+  <!-- Formulir Rating dan Komentar -->
+  <section class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+    <h3 class="text-2xl font-semibold mb-4 text-center font-['Lusitana']">Beri Rating</h3>
+
+    <!-- Rating Bintang -->
+    <div id="rating-container" class="flex justify-center mb-6">
+      <span class="text-3xl cursor-pointer text-gray-300" data-value="1">★</span>
+      <span class="text-3xl cursor-pointer text-gray-300" data-value="2">★</span>
+      <span class="text-3xl cursor-pointer text-gray-300" data-value="3">★</span>
+      <span class="text-3xl cursor-pointer text-gray-300" data-value="4">★</span>
+      <span class="text-3xl cursor-pointer text-gray-300" data-value="5">★</span>
+    </div>
+
+    <!-- Formulir Komentar (Awalnya Disembunyikan) -->
+    <form id="review-form" class="space-y-4 hidden">
+      <div>
+        <label for="comment" class="block text-lg font-['Lusitana']">Komentar Anda</label>
+        <textarea id="comment" rows="4" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b6f3d]" placeholder="Tulis komentar Anda di sini..."></textarea>
+      </div>
+      <!-- Tombol Kirim -->
+      <div class="text-center">
+        <button type="submit" id="submit-review" class="bg-[#8b6f3d] text-white px-6 py-2 rounded-lg hover:bg-[#574A21] transition duration-300 transform hover:scale-105 shadow-lg">
+          Kirim Ulasan
+        </button>
+      </div>
+    </form>
+      </section>
 
 <!-- Contact -->
 <footer id="contact" class="bg-[#DDD0C0] text-[#574A21] py-10">
@@ -257,42 +287,81 @@
 
 
 <script>
-//ulasan
-document.addEventListener("DOMContentLoaded", () => {
-  const reviews = [
-    {
-      stars: 5,
-      comment: "Pengalaman menginap yang luar biasa! Villa ini benar-benar sempurna – bersih, nyaman, dan sangat estetis. Fasilitas lengkap, suasana tenang, dan pelayanannya luar biasa. Pasti akan kembali lagi!"
-    },
-    {
-      stars: 5,
-      comment: "Sangat recommended! Semua fasilitas sesuai deskripsi, bahkan lebih bagus dari foto. Staf ramah dan sangat membantu. Terima kasih untuk pengalaman menginap yang menyenangkan!"
-    },
-    {
-      stars: 4,
-      comment: "Pengalaman menginap yang menyenangkan. Dekorasi villa sangat indah dan suasananya nyaman. Akan lebih sempurna jika [misalnya sarapan tersedia]."
-    }
-  ];
+    document.addEventListener("DOMContentLoaded", () => {
+      const reviewsContainer = document.getElementById("reviews");
+      const ratingContainer = document.getElementById("rating-container");
+      const reviewForm = document.getElementById("review-form");
+      const commentInput = document.getElementById("comment");
+      let selectedRating = 0;
 
-  const reviewsContainer = document.getElementById("reviews");
+      // Ambil ulasan dari Local Storage
+      let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
 
-  reviews.forEach(review => {
-    const starsHtml = `
-      ${"★".repeat(review.stars).split('').map(star => `<span class="text-yellow-500">${star}</span>`).join('')}
-      ${"☆".repeat(5 - review.stars).split('').map(star => `<span class="text-gray-300">${star}</span>`).join('')}
-    `;
+      // Fungsi menampilkan ulasan
+      function displayReviews() {
+        reviewsContainer.innerHTML = "";
+        reviews.forEach((review, index) => {
+          const starsHtml = `
+            ${"★".repeat(review.stars).split('').map(star => `<span class="text-yellow-500">${star}</span>`).join('')}
+            ${"☆".repeat(5 - review.stars).split('').map(star => `<span class="text-gray-300">${star}</span>`).join('')}
+          `;
+          const reviewCard = `
+            <div class="bg-white p-6 rounded-lg shadow-md relative">
+              <div class="stars text-xl mb-2">${starsHtml}</div>
+              <p class="text-gray-700 italic">"${review.comment}"</p>
+            </div>
+          `;
+          reviewsContainer.innerHTML += reviewCard;
+        });
+      }
 
-    const reviewCard = `
-      <div class="bg-white p-6 rounded-lg shadow-md font-[Lusitana]">
-        <div class="stars text-xl mb-2">${starsHtml}</div>
-        <hr class="my-2">
-        <p class="text-gray-700 mt-4"><strong>Komentar</strong></p>
-        <p class="italic">"${review.comment}"</p>
-      </div>
-    `;
-    reviewsContainer.innerHTML += reviewCard;
-  });
+      // Fungsi menyimpan ulasan ke Local Storage
+      function saveReviews() {
+        localStorage.setItem("reviews", JSON.stringify(reviews));
+      }
+
+      // Event: Pilih Rating Bintang
+      ratingContainer.addEventListener("click", (e) => {
+        if (e.target.dataset.value) {
+          selectedRating = parseInt(e.target.dataset.value);
+          document.querySelectorAll("#rating-container span").forEach(span => {
+            span.classList.remove("text-yellow-500");
+            span.classList.add("text-gray-300");
+          });
+          for (let i = 0; i < selectedRating; i++) {
+            ratingContainer.children[i].classList.remove("text-gray-300");
+            ratingContainer.children[i].classList.add("text-yellow-500");
+          }
+          reviewForm.classList.remove("hidden"); // Tampilkan formulir komentar
+        }
+      });
+
+      // Event: Kirim Ulasan
+      reviewForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const comment = commentInput.value.trim();
+  if (comment && selectedRating > 0) {
+    // Tambahkan ulasan baru
+    reviews.push({ stars: selectedRating, comment });
+    saveReviews();
+    displayReviews();
+    reviewForm.reset();
+    reviewForm.classList.add("hidden");
+    selectedRating = 0;
+
+    // Reset warna bintang
+    document.querySelectorAll("#rating-container span").forEach(span => {
+      span.classList.remove("text-yellow-500");
+      span.classList.add("text-gray-300");
+    });
+  } else {
+    alert("Harap pilih rating dan isi komentar!");
+  }
 });
+
+      // Tampilkan ulasan saat halaman dimuat
+      displayReviews();
+    });
 
 const prevButton = document.getElementById('prev-slide');
     const nextButton = document.getElementById('next-slide');
