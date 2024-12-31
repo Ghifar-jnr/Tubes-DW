@@ -253,106 +253,159 @@
     </div>
 </footer>
 
-
 <script>
-const prevButton = document.getElementById('prev-slide');
-    const nextButton = document.getElementById('next-slide');
-    const imageList = document.getElementById('image-list');
-
-    function scrollGallery(direction) {
-        const scrollAmount = 300; 
-        imageList.scrollBy({
-            left: direction === 'next' ? scrollAmount : -scrollAmount,
-            behavior: 'smooth'
-        });
-    }
-
-    prevButton.addEventListener('click', () => scrollGallery('prev'));
-    nextButton.addEventListener('click', () => scrollGallery('next'));
-
-    // Keyboard Navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            scrollGallery('prev');
-        } else if (e.key === 'ArrowRight') {
-            scrollGallery('next');
-        }   
-    });
-
-    [prevButton, nextButton].forEach((button) => {
-        button.addEventListener('mouseenter', () => button.classList.add('bg-[#DDD0C0]'));
-        button.addEventListener('mouseleave', () => button.classList.remove('bg-[#DDD0C0]'));
-    });function onToggleMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenu.classList.toggle('hidden');
-}
-//ulasan
-document.addEventListener("DOMContentLoaded", () => {
-  const reviews = [
-    {
-      stars: 5,
-      comment: "Pengalaman menginap yang luar biasa! Villa ini benar-benar sempurna - bersih, nyaman, dan sangat estetis. Fasilitas lengkap, suasana tenang, dan pelayanannya luar biasa. Pasti akan kembali lagi!"
-    },
-    {
-      stars: 5,
-      comment: "Sangat recommended! Semua fasilitas sesuai deskripsi, bahkan lebih bagus dari foto. Staf ramah dan sangat membantu. Terima kasih untuk pengalaman menginap yang menyenangkan!"
-    },
-    {
-      stars: 4,
-      comment: "Villa yang cantik dan nyaman, hanya sedikit ada kendala kecil seperti masalah spesifik, misalnya Wi-Fi agak lambat. Tapi secara keseluruhan, sangat puas"
-    }
-  ];
-
-  const reviewsContainer = document.getElementById("reviews");
-
-  reviews.forEach(review => {
-    const starsHtml = `
-      ${"★".repeat(review.stars).split('').map(star => `<span class="text-yellow-500">${star}</span>`).join('')}
-      ${"☆".repeat(5 - review.stars).split('').map(star => `<span class="text-gray-300">${star}</span>`).join('')}
-    `;
-
-    const reviewCard = `
-      <div class="bg-white p-6 rounded-lg shadow-md font-[Lusitana]">
-        <div class="stars text-xl mb-2">${starsHtml}</div>
-        <hr class="my-2">
-        <p class="text-gray-700 mt-4"><strong>Komentar</strong></p>
-        <p class="italic">"${review.comment}"</p>
-      </div>
-    `;
-    reviewsContainer.innerHTML += reviewCard;
-  });
-});
-
-function closeMenuOnClick() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenu.classList.add('hidden'); // Tambahkan kembali class "hidden"
-}
-
-// Tambahkan event listener ke semua tautan di dalam menu
-document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', closeMenuOnClick);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const elementsToAnimate = document.querySelectorAll(".animate-slide-in");
-    elementsToAnimate.forEach((element) => {
-        element.style.opacity = "0";
-        element.style.transform = "translateY(20px)";
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    element.style.transition = "opacity 1s ease-out, transform 1s ease-out";
-                    element.style.opacity = "1";
-                    element.style.transform = "translateY(0)";
-                    observer.unobserve(entry.target);
-                }
+    //galery
+    const prevButton = document.getElementById('prev-slide');
+        const nextButton = document.getElementById('next-slide');
+        const imageList = document.getElementById('image-list');
+    
+        function scrollGallery(direction) {
+            const scrollAmount = 300; 
+            imageList.scrollBy({
+                left: direction === 'next' ? scrollAmount : -scrollAmount,
+                behavior: 'smooth'
             });
+        }
+    
+        prevButton.addEventListener('click', () => scrollGallery('prev'));
+        nextButton.addEventListener('click', () => scrollGallery('next'));
+    
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                scrollGallery('prev');
+            } else if (e.key === 'ArrowRight') {
+                scrollGallery('next');
+            }   
         });
-
-        observer.observe(element);
+    
+        [prevButton, nextButton].forEach((button) => {
+            button.addEventListener('mouseenter', () => button.classList.add('bg-[#DDD0C0]'));
+            button.addEventListener('mouseleave', () => button.classList.remove('bg-[#DDD0C0]'));
+        });function onToggleMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    }
+    
+    function closeMenuOnClick() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.add('hidden'); 
+    }
+    
+    // Tambahkan event listener ke semua tautan di dalam menu
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', closeMenuOnClick);
     });
-});
-
-</script>
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        const elementsToAnimate = document.querySelectorAll(".animate-slide-in");
+        elementsToAnimate.forEach((element) => {
+            element.style.opacity = "0";
+            element.style.transform = "translateY(20px)";
+    
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        element.style.transition = "opacity 1s ease-out, transform 1s ease-out";
+                        element.style.opacity = "1";
+                        element.style.transform = "translateY(0)";
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+    
+            observer.observe(element);
+        });
+    });
+    
+    //rating
+    document.addEventListener("DOMContentLoaded", () => {
+          const reviewsRContainer = document.getElementById("reviewsR");
+          const ratingContainerR = document.getElementById("rating-containerR");
+          const reviewFormR = document.getElementById("review-formR");
+          const reviewsRSection = document.getElementById("review-sectionR");
+          const addReviewBtnR = document.getElementById("add-review-btnR");
+          const commentRInputR = document.getElementById("commentR");
+          const prevBtn = document.getElementById("prev-btn");
+          const nextBtn = document.getElementById("next-btn");
+          let selectedRating = 0;
+    
+          // Ambil ulasan dari Local Storage (tidak menghapusnya)
+          let reviewsR = JSON.parse(localStorage.getItem("reviewsR")) || [];
+    
+          // Fungsi menampilkan ulasan
+          function displayreviewsR() {
+            reviewsRContainer.innerHTML = "";
+            reviewsR.forEach((review) => {
+              const starsHtml = "★".repeat(review.stars).split('').map(() => '<span class="text-yellow-500">★</span>').join('') +
+                               "☆".repeat(5 - review.stars).split('').map(() => '<span class="text-gray-300">☆</span>').join('');
+              const reviewCard = `
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                  <div class="stars text-xl mb-2">${starsHtml}</div>
+                  <p class="text-gray-700 italic">"${review.commentR}"</p>
+                </div>
+              `;
+              reviewsRContainer.innerHTML += reviewCard;
+            });
+          }
+    
+          // Fungsi navigasi scroll
+          function scrollGallery(direction) {
+            const scrollAmount = reviewsRContainer.offsetWidth + 16; // Tambahkan margin antar card
+            if (direction === "next") {
+              reviewsRContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            } else {
+              reviewsRContainer.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+            }
+          }
+    
+          // Event tombol navigasi
+          prevBtn.addEventListener("click", () => scrollGallery("prev"));
+          nextBtn.addEventListener("click", () => scrollGallery("next"));
+    
+          // Event: Tampilkan formulir ulasan saat tombol diklik
+          addReviewBtnR.addEventListener("click", () => {
+            reviewsRSection.classList.remove("hidden");
+            ratingContainerR.classList.remove("hidden");  // Menampilkan kembali rating
+          });
+    
+          // Event: Pilih Rating Bintang
+          ratingContainerR.addEventListener("click", (e) => {
+            if (e.target.dataset.value) {
+              selectedRating = parseInt(e.target.dataset.value);
+              document.querySelectorAll("#rating-containerR span").forEach(span => {
+                span.classList.remove("text-yellow-500");
+                span.classList.add("text-gray-300");
+              });
+              for (let i = 0; i < selectedRating; i++) {
+                ratingContainerR.children[i].classList.remove("text-gray-300");
+                ratingContainerR.children[i].classList.add("text-yellow-500");
+              }
+            }
+          });
+    
+          // Event: Kirim Ulasan
+          reviewFormR.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const commentR = commentRInputR.value.trim();
+            if (commentR && selectedRating > 0) {
+              // Tambahkan ulasan baru
+              reviewsR.push({ stars: selectedRating, commentR });
+              localStorage.setItem("reviewsR", JSON.stringify(reviewsR));
+              displayreviewsR();
+              reviewFormR.reset();
+              reviewsRSection.classList.add("hidden");
+              selectedRating = 0;
+    
+              // Sembunyikan rating setelah ulasan ditambahkan
+              ratingContainerR.classList.add("hidden");  // Menyembunyikan rating bintang
+            } else {
+              alert("Harap pilih rating dan isi komentar!");
+            }
+          });
+    
+          // Tampilkan ulasan saat halaman dimuat
+          displayreviewsR();
+        });
+    
+    </script>
 </body></html>
