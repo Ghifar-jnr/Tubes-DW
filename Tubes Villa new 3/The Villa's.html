@@ -329,42 +329,42 @@
     
     //rating
     document.addEventListener("DOMContentLoaded", () => {
-          const reviewsRContainer = document.getElementById("reviewsR");
-          const ratingContainerR = document.getElementById("rating-containerR");
-          const reviewFormR = document.getElementById("review-formR");
-          const reviewsRSection = document.getElementById("review-sectionR");
-          const addReviewBtnR = document.getElementById("add-review-btnR");
-          const commentRInputR = document.getElementById("commentR");
+          const reviewsVContainer = document.getElementById("reviewsV");
+          const ratingContainerV = document.getElementById("rating-containerV");
+          const reviewFormV = document.getElementById("review-formV");
+          const reviewsVSection = document.getElementById("review-sectionV");
+          const addReviewBtnV= document.getElementById("add-review-btnV");
+          const commentVInputV = document.getElementById("commentV");
           const prevBtn = document.getElementById("prev-btn");
           const nextBtn = document.getElementById("next-btn");
           let selectedRating = 0;
     
           // Ambil ulasan dari Local Storage (tidak menghapusnya)
-          let reviewsR = JSON.parse(localStorage.getItem("reviewsR")) || [];
+          let reviewsV = JSON.parse(localStorage.getItem("reviewsV")) || [];
     
           // Fungsi menampilkan ulasan
-          function displayreviewsR() {
-            reviewsRContainer.innerHTML = "";
-            reviewsR.forEach((review) => {
+          function displayreviewsV() {
+            reviewsVContainer.innerHTML = "";
+            reviewsV.forEach((review) => {
               const starsHtml = "★".repeat(review.stars).split('').map(() => '<span class="text-yellow-500">★</span>').join('') +
                                "☆".repeat(5 - review.stars).split('').map(() => '<span class="text-gray-300">☆</span>').join('');
               const reviewCard = `
                 <div class="bg-white p-6 rounded-lg shadow-md">
                   <div class="stars text-xl mb-2">${starsHtml}</div>
-                  <p class="text-gray-700 italic">"${review.commentR}"</p>
+                  <p class="text-gray-700 italic">"${review.commentV}"</p>
                 </div>
               `;
-              reviewsRContainer.innerHTML += reviewCard;
+              reviewsVContainer.innerHTML += reviewCard;
             });
           }
     
           // Fungsi navigasi scroll
           function scrollGallery(direction) {
-            const scrollAmount = reviewsRContainer.offsetWidth + 16; // Tambahkan margin antar card
+            const scrollAmount = reviewsVContainer.offsetWidth + 16; // Tambahkan margin antar card
             if (direction === "next") {
-              reviewsRContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
+              reviewsVContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
             } else {
-              reviewsRContainer.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+              reviewsVContainer.scrollBy({ left: -scrollAmount, behavior: "smooth" });
             }
           }
     
@@ -374,47 +374,47 @@
     
           // Event: Tampilkan formulir ulasan saat tombol diklik
           addReviewBtnR.addEventListener("click", () => {
-            reviewsRSection.classList.remove("hidden");
-            ratingContainerR.classList.remove("hidden");  // Menampilkan kembali rating
+            reviewsVSection.classList.remove("hidden");
+            ratingContainerV.classList.remove("hidden");  // Menampilkan kembali rating
           });
     
           // Event: Pilih Rating Bintang
-          ratingContainerR.addEventListener("click", (e) => {
+          ratingContainerV.addEventListener("click", (e) => {
             if (e.target.dataset.value) {
               selectedRating = parseInt(e.target.dataset.value);
-              document.querySelectorAll("#rating-containerR span").forEach(span => {
+              document.querySelectorAll("#rating-containerV span").forEach(span => {
                 span.classList.remove("text-yellow-500");
                 span.classList.add("text-gray-300");
               });
               for (let i = 0; i < selectedRating; i++) {
-                ratingContainerR.children[i].classList.remove("text-gray-300");
-                ratingContainerR.children[i].classList.add("text-yellow-500");
+                ratingContainerV.children[i].classList.remove("text-gray-300");
+                ratingContainerV.children[i].classList.add("text-yellow-500");
               }
             }
           });
     
           // Event: Kirim Ulasan
-          reviewFormR.addEventListener("submit", (e) => {
+          reviewFormV.addEventListener("submit", (e) => {
             e.preventDefault();
-            const commentR = commentRInputR.value.trim();
-            if (commentR && selectedRating > 0) {
+            const commentV = commentVInputV.value.trim();
+            if (commentV && selectedRating > 0) {
               // Tambahkan ulasan baru
-              reviewsR.push({ stars: selectedRating, commentR });
-              localStorage.setItem("reviewsR", JSON.stringify(reviewsR));
-              displayreviewsR();
-              reviewFormR.reset();
-              reviewsRSection.classList.add("hidden");
+              reviewsV.push({ stars: selectedRating, commentV });
+              localStorage.setItem("reviewsV", JSON.stringify(reviewsV));
+              displayreviewsV();
+              reviewFormV.reset();
+              reviewsVSection.classList.add("hidden");
               selectedRating = 0;
     
               // Sembunyikan rating setelah ulasan ditambahkan
-              ratingContainerR.classList.add("hidden");  // Menyembunyikan rating bintang
+              ratingContainerV.classList.add("hidden");  // Menyembunyikan rating bintang
             } else {
               alert("Harap pilih rating dan isi komentar!");
             }
           });
     
           // Tampilkan ulasan saat halaman dimuat
-          displayreviewsR();
+          displayreviewsV();
         });
     
     </script>
