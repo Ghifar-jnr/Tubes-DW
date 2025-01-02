@@ -163,36 +163,37 @@
 
 <!-- Modal Booking -->
 <div id="bookingModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center px-4">
-    <div class="bg-white rounded-lg p-8 w-full max-w-md shadow-lg relative">
-        <button id="closeModal" class="absolute top-3 right-4 text-gray-600 text-2xl hover:text-gray-800">&times;</button>
-        <h3 id="modalTitle" class="text-xl sm:text-2xl font-semibold text-gray-800 mb-6 text-center">Form Pemesanan - Villa</h3>
+    <div class="bg-white rounded-lg p-6 w-full max-w-sm shadow-lg relative mt-18">
+        <button id="closeModal" class="absolute top-3 right-4 text-gray-600 text-xl hover:text-gray-800">&times;</button>
+        <h3 id="modalTitle" class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 text-center">Form Pemesanan - Villa</h3>
         <form id="bookingForm" onsubmit="event.preventDefault(); sendBooking();">
-            <div class="mb-4">
-                <label for="nama" class="block text-gray-700 text-sm sm:text-base">Nama Lengkap</label>
+            <div class="mb-3">
+                <label for="nama" class="block text-gray-700 text-sm">Nama Lengkap</label>
                 <input type="text" id="nama" class="w-full border p-2 rounded-md" required>
             </div>
-            <div class="mb-4">
-                <label for="telepon" class="block text-gray-700 text-sm sm:text-base">Nomor Telepon</label>
+            <div class="mb-3">
+                <label for="telepon" class="block text-gray-700 text-sm">Nomor Telepon</label>
                 <input type="tel" id="telepon" class="w-full border p-2 rounded-md" required>
             </div>
-            <div class="mb-4">
-                <label for="email" class="block text-gray-700 text-sm sm:text-base">Email</label>
+            <div class="mb-3">
+                <label for="email" class="block text-gray-700 text-sm">Email</label>
                 <input type="email" id="email" class="w-full border p-2 rounded-md" required>
             </div>
-            <div class="mb-4">
-                <label for="checkin" class="block text-gray-700 text-sm sm:text-base">Tanggal Check-in</label>
+            <div class="mb-3">
+                <label for="checkin" class="block text-gray-700 text-sm">Tanggal Check-in</label>
                 <input type="text" id="checkin" class="w-full border p-2 rounded-md" required>
             </div>
-            <div class="mb-4">
-                <label for="checkout" class="block text-gray-700 text-sm sm:text-base">Tanggal Check-out</label>
+            <div class="mb-3">
+                <label for="checkout" class="block text-gray-700 text-sm">Tanggal Check-out</label>
                 <input type="text" id="checkout" class="w-full border p-2 rounded-md" required>
             </div>
             <div class="text-center">
-                <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition">Kirim Pemesanan</button>
+                <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">Kirim Pemesanan</button>
             </div>
         </form>
     </div>
 </div>
+
 
 <!-- Tombol untuk melihat struk -->
 <button id="lihatStrukBtn" class="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition hidden">
