@@ -40,12 +40,26 @@
                 <ion-icon name="menu" onclick="onToggleMenu()" class="text-3xl cursor-pointer md:hidden"></ion-icon>
             </div>
         </nav>
+
+            <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed right-0 w-[60%] h-[458px] bg-[#DDD0C0] z-40">
+        <div class="flex justify-end p-4">
+            <ion-icon name="close" onclick="onToggleMenu()" class="text-4xl cursor-pointer"></ion-icon>
+        </div>
+        <ul class="flex flex-col items-center space-y-8 mt-16">
+            <li><a href="stay.html" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">STAY</a></li>
+            <div class="w-[60%] h-1 bg-[#574A21] mx-auto my-4"></div>
+            <li><a href="about.html" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">ABOUT</a></li>
+            <div class="w-[60%] h-1 bg-[#574A21] mx-auto my-4"></div>
+            <li><a href="#contact" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">CONTACT US</a></li>
+        </ul>
+    </div>
     </header>
 
     <!-- Hero Section -->
     <section class="h-screen bg-fixed bg-cover bg-center opacity-[85%] animate-slide-in" style="background-image: url('https://media.architecturaldigest.in/wp-content/uploads/2019/06/Bali-villa-Uluwatu-SAOTA.jpg');">
         <div class="flex items-center justify-center h-full bg-opacity-50">
-            <h1 class="text-7xl font-bold text-white font-['Orelega']">BOOK NOW</h1>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white font-['Orelega']">BOOK NOW</h1>
         </div>
     </section>
 
@@ -53,8 +67,8 @@
     <div class="container mx-auto px-4 py-10">
         <!-- Title Section -->
         <div class="text-center mb-10">
-            <h1 class="text-3xl md:text-4xl font-bold mb-8 font-['Orelega']">The Peak of Self-Serenity</h1>
-            <p class="text-lg md:text-xl text-gray-600 font-['Overpass']">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 font-['Orelega']">The Peak of Self-Serenity</h1>
+            <p class="text-base sm:text-lg md:text-xl text-gray-600 font-['Overpass']">
                 The perfect vacation is just one step away.<br />
                 A comfortable and fully equipped villa awaits you!<br />
                 Come and experience a new way of life.
@@ -62,92 +76,85 @@
         </div>
 
         <!-- API -->
-        <div class="border rounded-lg p-4 bg-white w-[30%] mx-auto">
+        <div class="border rounded-lg p-4 bg-white w-full sm:w-[50%] lg:w-[30%] mx-auto">
             <!-- Tanggal --> 
             <div class="flex gap-2 items-center justify-center">
-                <div class="text-[#574A21] font-medium text-xl" id="day-name">Memuat...</div>
-                <div class="text-[#574A21] font-medium text-xl" id="date">--</div>
-                <div class="text-[#574A21] font-medium text-xl" id="month-year">Memuat...</div>
-                <div class="text-[#574A21] font-medium text-xl"> / </div>
-                <div class="text-[#574A21] font-medium text-xl" id="time">--:--</div>
+                <div class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl" id="day-name">Memuat...</div>
+                <div class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl" id="date">--</div>
+                <div class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl" id="month-year">Memuat...</div>
+                <div class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl"> / </div>
+                <div class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl" id="time">--:--</div>
             </div>
             
             <!-- Waktu -->
                 <div id="weather" class="mt-4 mb-2">
                     <div class="flex items-center justify-center mb-2">
-                        <img id="weather-icon" class="w-8 h-8" alt="Ikon Cuaca">
+                        <img id="weather-icon" class="w-6 sm:w-8 h-6 sm:h-8" alt="Ikon Cuaca">
                     </div>
-                    <p id="weather-description" class="text-[#574A21] font-medium text-xl text-center">Memuat...</p>
-                    <p id="temperature" class="text-xl font-bold text-blue-600 text-center">-- °C</p>
+                    <p id="weather-description" class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl text-center">Memuat...</p>
+                    <p id="temperature" class="text-base sm:text-lg md:text-xl font-bold text-blue-600 text-center">-- °C</p>
                 </div>
             </div>
         </div>
     </div>
     
 <!-- Container Villa Cards -->
-<div class="flex flex-col gap-8 p-8 font-['Lusitana']">
+<div class="flex flex-col gap-8 p-4 sm:p-8 font-['Lusitana']">
     <!-- Villa Card 1 -->
-    <div class="flex flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-6 py-4 md:px-12 md:py-8">
-        <img src="https://asset.kompas.com/crops/5IVeE9MjpfvHfkC4ICmd1ySeP94=/125x63:875x563/1200x800/data/photo/2023/02/26/63fb51e0c37d2.jpg" alt="The Russi Villa" class="w-1/3 object-cover rounded-lg">
-        <div class="flex-1 flex justify-between items-center pl-6">
-            <div>
-                <h2 class="text-2xl font-semibold italic text-[#574A21] mb-28">The Russi Villa</h2>
+    <div class="flex flex-col sm:flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-8">
+        <img src="https://asset.kompas.com/crops/5IVeE9MjpfvHfkC4ICmd1ySeP94=/125x63:875x563/1200x800/data/photo/2023/02/26/63fb51e0c37d2.jpg" alt="The Russi Villa" class="w-full sm:w-1/3 object-cover rounded-lg mb-4 sm:mb-0">
+        <div class="flex-1 flex flex-col sm:flex-row justify-between items-center sm:items-start sm:pl-6">
+            <div class="text-center sm:text-left">
+                <h2 class="text-xl sm:text-2xl font-semibold italic text-[#574A21] mb-4">The Russi Villa</h2>
                 <a href="russi.html" class="px-4 py-2 bg-white text-[#574A21] border border-[#574A21] hover:bg-[#D9A400] hover:text-white transition rounded-full">MORE DETAIL</a>
             </div>
-            <div class="text-right">
-                <div class="flex gap-2 mb-16">
-                    <div class="text-[#574A21] font-medium text-xl" id="day-name">Memuat...</div>
-                    <div class="text-[#574A21] font-medium text-xl" id="date">--</div>
-                    <div class="text-[#574A21] font-medium text-xl" id="month-year">Memuat...</div>
-                    <div class="text-[#574A21] font-medium text-xl"> / </div>
-                    <div class="text-[#574A21] font-medium text-xl" id="time">--:--</div>
-                </div>
-                <p class="text-[#574A21] font-medium text-xl mb-4">Rp <span class="text-red-600 font-bold">1.500.000</span> / Malam</p>
+            <div class="text-center sm:text-right mt-4 sm:mt-0">
+                <p class="text-[#574A21] font-medium text-lg sm:text-xl mb-4">Rp <span class="text-red-600 font-bold">1.500.000</span> / Malam</p>
                 <button class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-full bookNowBtn" data-villa="The Russi Villa">BOOK NOW</button>
             </div>
         </div>
     </div>
 
     <!-- Villa Card 2 -->
-    <div class="flex flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-6 py-4 md:px-12 md:py-8">
-        <img src="http://pix3.agoda.net/hotelimages/680592/0/900ae1a932aaa7ee3c6b861111994a2e.jpg" alt="Villa Serenitas" class="w-1/3 object-cover rounded-lg">
-        <div class="flex-1 flex justify-between items-center pl-6">
-            <div>
-                <h2 class="text-2xl font-semibold italic text-[#574A21] mb-4">Villa Serenitas</h2>
+    <div class="flex flex-col sm:flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-8">
+        <img src="http://pix3.agoda.net/hotelimages/680592/0/900ae1a932aaa7ee3c6b861111994a2e.jpg" alt="Villa Serenitas" class="w-full sm:w-1/3 object-cover rounded-lg mb-4 sm:mb-0">
+        <div class="flex-1 flex flex-col sm:flex-row justify-between items-center sm:items-start sm:pl-6">
+            <div class="text-center sm:text-left">
+                <h2 class="text-xl sm:text-2xl font-semibold italic text-[#574A21] mb-4">Villa Serenitas</h2>
                 <a href="serenitas.html" class="px-4 py-2 bg-white text-[#574A21] border border-[#574A21] hover:bg-[#D9A400] hover:text-white transition rounded-full">MORE DETAIL</a>
             </div>
-            <div class="text-right">
-                <p class="text-[#574A21] font-medium text-xl mb-4">Rp <span class="text-red-600 font-bold">2.000.000</span> / Malam</p>
+            <div class="text-center sm:text-right mt-4 sm:mt-0">
+                <p class="text-[#574A21] font-medium text-lg sm:text-xl mb-4">Rp <span class="text-red-600 font-bold">2.000.000</span> / Malam</p>
                 <button class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-full bookNowBtn" data-villa="Villa Serenitas">BOOK NOW</button>
             </div>
         </div>
     </div>
 
     <!-- Villa Card 3 -->
-    <div class="flex flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-6 py-4 md:px-12 md:py-8">
-        <img src="https://www.villadibali.net/villa-images/photo/villa-mewah-pemandangan-sawah-canggu_big.jpg" alt="Villa Panoramik" class="w-1/3 object-cover rounded-lg">
-        <div class="flex-1 flex justify-between items-center pl-6">
-            <div>
-                <h2 class="text-2xl font-semibold italic text-[#574A21] mb-4">Villa Panoramik</h2>
+    <div class="flex flex-col sm:flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-8">
+        <img src="https://www.villadibali.net/villa-images/photo/villa-mewah-pemandangan-sawah-canggu_big.jpg" alt="Villa Panoramik" class="w-full sm:w-1/3 object-cover rounded-lg mb-4 sm:mb-0">
+        <div class="flex-1 flex flex-col sm:flex-row justify-between items-center sm:items-start sm:pl-6">
+            <div class="text-center sm:text-left">
+                <h2 class="text-xl sm:text-2xl font-semibold italic text-[#574A21] mb-4">Villa Panoramik</h2>
                 <a href="panoramik.html" class="px-4 py-2 bg-white text-[#574A21] border border-[#574A21] hover:bg-[#D9A400] hover:text-white transition rounded-full">MORE DETAIL</a>
             </div>
-            <div class="text-right">
-                <p class="text-[#574A21] font-medium text-xl mb-4">Rp <span class="text-red-600 font-bold">2.500.000</span> / Malam</p>
+            <div class="text-center sm:text-right mt-4 sm:mt-0">
+                <p class="text-[#574A21] font-medium text-lg sm:text-xl mb-4">Rp <span class="text-red-600 font-bold">2.500.000</span> / Malam</p>
                 <button class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-full bookNowBtn" data-villa="Villa Panoramik">BOOK NOW</button>
             </div>
         </div>
     </div>
 
     <!-- Villa Card 4 -->
-    <div class="flex flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-6 py-4 md:px-12 md:py-8">
-        <img src="https://www.villadibali.net/villa-images/photo/villa-6-kamar-tidur-mewah-nyaman-hanya-500-meter-pantai_big.jpg" alt="The Villa's" class="w-1/3 object-cover rounded-lg">
-        <div class="flex-1 flex justify-between items-center pl-6">
-            <div>
-                <h2 class="text-2xl font-semibold italic text-[#574A21] mb-4">The Villa's</h2>
+    <div class="flex flex-col sm:flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-8">
+        <img src="https://www.villadibali.net/villa-images/photo/villa-6-kamar-tidur-mewah-nyaman-hanya-500-meter-pantai_big.jpg" alt="The Villa's" class="w-full sm:w-1/3 object-cover rounded-lg mb-4 sm:mb-0">
+        <div class="flex-1 flex flex-col sm:flex-row justify-between items-center sm:items-start sm:pl-6">
+            <div class="text-center sm:text-left">
+                <h2 class="text-xl sm:text-2xl font-semibold italic text-[#574A21] mb-4">The Villa's</h2>
                 <a href="The Villa's.html" class="px-4 py-2 bg-white text-[#574A21] border border-[#574A21] hover:bg-[#D9A400] hover:text-white transition rounded-full">MORE DETAIL</a>
             </div>
-            <div class="text-right">
-                <p class="text-[#574A21] font-medium text-xl mb-4">Rp <span class="text-red-600 font-bold">3.000.000</span> / Malam</p>
+            <div class="text-center sm:text-right mt-4 sm:mt-0">
+                <p class="text-[#574A21] font-medium text-lg sm:text-xl mb-4">Rp <span class="text-red-600 font-bold">3.000.000</span> / Malam</p>
                 <button class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-full bookNowBtn" data-villa="The Villa's">BOOK NOW</button>
             </div>
         </div>
@@ -155,54 +162,57 @@
 </div>
 
 <!-- Modal Booking -->
-<div id="bookingModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
+<div id="bookingModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center px-4">
     <div class="bg-white rounded-lg p-8 w-full max-w-md shadow-lg relative">
         <button id="closeModal" class="absolute top-3 right-4 text-gray-600 text-2xl hover:text-gray-800">&times;</button>
-        <h3 id="modalTitle" class="text-2xl font-semibold text-gray-800 mb-6 text-center">Form Pemesanan - Villa</h3>
+        <h3 id="modalTitle" class="text-xl sm:text-2xl font-semibold text-gray-800 mb-6 text-center">Form Pemesanan - Villa</h3>
         <form id="bookingForm" onsubmit="event.preventDefault(); sendBooking();">
             <div class="mb-4">
-                <label for="nama" class="block text-gray-700">Nama Lengkap</label>
+                <label for="nama" class="block text-gray-700 text-sm sm:text-base">Nama Lengkap</label>
                 <input type="text" id="nama" class="w-full border p-2 rounded-md" required>
             </div>
             <div class="mb-4">
-                <label for="telepon" class="block text-gray-700">Nomor Telepon</label>
+                <label for="telepon" class="block text-gray-700 text-sm sm:text-base">Nomor Telepon</label>
                 <input type="tel" id="telepon" class="w-full border p-2 rounded-md" required>
             </div>
             <div class="mb-4">
-                <label for="email" class="block text-gray-700">Email</label>
+                <label for="email" class="block text-gray-700 text-sm sm:text-base">Email</label>
                 <input type="email" id="email" class="w-full border p-2 rounded-md" required>
             </div>
             <div class="mb-4">
-                <label for="checkin" class="block text-gray-700">Tanggal Check-in</label>
+                <label for="checkin" class="block text-gray-700 text-sm sm:text-base">Tanggal Check-in</label>
                 <input type="text" id="checkin" class="w-full border p-2 rounded-md" required>
             </div>
             <div class="mb-4">
-                <label for="checkout" class="block text-gray-700">Tanggal Check-out</label>
+                <label for="checkout" class="block text-gray-700 text-sm sm:text-base">Tanggal Check-out</label>
                 <input type="text" id="checkout" class="w-full border p-2 rounded-md" required>
             </div>
             <div class="text-center">
-                <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-lg">Kirim Pemesanan</button>
+                <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition">Kirim Pemesanan</button>
             </div>
         </form>
     </div>
 </div>
-<!-- Tombol untuk melihat struk) -->
+
+<!-- Tombol untuk melihat struk -->
 <button id="lihatStrukBtn" class="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition hidden">
   Lihat Struk
 </button>
 
 <!-- Modal Struk -->
-<div id="receiptModal" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-  <div class="bg-white p-6 rounded-lg shadow-lg">
+<div id="receiptModal" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center px-4">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
     <h2 id="villaName" class="text-xl font-semibold mb-4">Booking Receipt</h2>
-    <div id="bookingDetails" class="text-lg">
+    <div id="bookingDetails" class="text-sm sm:text-lg">
       <!-- Detail pemesanan akan ditampilkan di sini -->
     </div>
-    <!-- DP Button -->
-    <button id="dpBtn" class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-lg " onclick="redirectToWhatsApp()">DP</button>
-    <button id="closeReceiptModal" class="ml-48 bg-red-500 text-white px-4 py-2 mt-4 rounded-lg">Close</button>
+    <div class="flex flex-col sm:flex-row items-center justify-between mt-4">
+      <button id="dpBtn" class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-lg mb-2 sm:mb-0" onclick="redirectToWhatsApp()">DP</button>
+      <button id="closeReceiptModal" class="bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+    </div>
   </div>
 </div>
+
 
 <!-- Contact -->
 <footer id="contact" class="bg-[#DDD0C0] text-[#574A21] py-10">
@@ -251,6 +261,42 @@
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+    const elementsToAnimate = document.querySelectorAll(".animate-slide-in");
+    elementsToAnimate.forEach((element) => {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(20px)";
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    element.style.transition = "opacity 1s ease-out, transform 1s ease-out";
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(element);
+    });
+});
+
+function onToggleMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+}
+
+    function closeMenuOnClick() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.add('hidden'); // Tambahkan kembali class "hidden"
+}
+
+// Tambahkan event listener ke semua tautan di dalam menu
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', closeMenuOnClick);
+});
 
     const checkin = document.getElementById("checkin");
     const checkout = document.getElementById("checkout");
