@@ -61,6 +61,29 @@
             </p>
         </div>
 
+        <!-- API -->
+        <div class="border rounded-lg p-4 bg-white w-[30%] mx-auto">
+            <!-- Tanggal --> 
+            <div class="flex gap-2 items-center justify-center">
+                <div class="text-[#574A21] font-medium text-xl" id="day-name">Memuat...</div>
+                <div class="text-[#574A21] font-medium text-xl" id="date">--</div>
+                <div class="text-[#574A21] font-medium text-xl" id="month-year">Memuat...</div>
+                <div class="text-[#574A21] font-medium text-xl"> / </div>
+                <div class="text-[#574A21] font-medium text-xl" id="time">--:--</div>
+            </div>
+            
+            <!-- Waktu -->
+                <div id="weather" class="mt-4 mb-2">
+                    <div class="flex items-center justify-center mb-2">
+                        <img id="weather-icon" class="w-8 h-8" alt="Ikon Cuaca">
+                    </div>
+                    <p id="weather-description" class="text-[#574A21] font-medium text-xl text-center">Memuat...</p>
+                    <p id="temperature" class="text-xl font-bold text-blue-600 text-center">-- °C</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 <!-- Container Villa Cards -->
 <div class="flex flex-col gap-8 p-8 font-['Lusitana']">
     <!-- Villa Card 1 -->
@@ -426,7 +449,7 @@ function startClock() {
 }
 
 // Kunci API WeatherAPI (ganti dengan API Key Anda)
-const API_KEY = "5b390981f6a845bbbb044945241510"; // Ganti dengan API key dari WeatherAPI
+const API_KEY = "b220eb96d5e54d2e86d141136242912";
 const LOCATION = "Bali";
 
 // Fungsi untuk mendapatkan cuaca di Bali
@@ -440,15 +463,11 @@ async function fetchWeather() {
         const data = await response.json();
         const description = data.current.condition.text;
         const temperature = data.current.temp_c.toFixed(1); // Suhu dalam Celsius
-        const windSpeed = data.current.wind_kph; // Kecepatan angin
-        const humidity = data.current.humidity; // Kelembapan
         const weatherIcon = data.current.condition.icon; // Ikon cuaca
 
         // Menampilkan cuaca
         document.getElementById("weather-description").textContent = description;
         document.getElementById("temperature").textContent = `${temperature} °C`;
-        document.getElementById("wind-speed").textContent = `Kecepatan Angin: ${windSpeed} km/jam`;
-        document.getElementById("humidity").textContent = `Kelembapan: ${humidity}%`;
 
         // Menampilkan ikon cuaca
         document.getElementById("weather-icon").src = `https:${weatherIcon}`;
@@ -456,8 +475,6 @@ async function fetchWeather() {
         console.error("Error saat memuat cuaca:", error);
         document.getElementById("weather-description").textContent = "Gagal memuat cuaca.";
         document.getElementById("temperature").textContent = "-- °C";
-        document.getElementById("wind-speed").textContent = "Kecepatan Angin: -- km/jam";
-        document.getElementById("humidity").textContent = "Kelembapan: --%";
     }
 }
 
