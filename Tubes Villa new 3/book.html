@@ -501,6 +501,10 @@ function startClock(initialTime) {
     }, 1000);
 }
 
+// Menjalankan fungsi saat halaman selesai dimuat
+document.addEventListener("DOMContentLoaded", fetchCurrentDate);
+
+
 // Kunci API WeatherAPI (ganti dengan API Key Anda)
 const API_KEY = "b220eb96d5e54d2e86d141136242912";
 const LOCATION = "Bali";
