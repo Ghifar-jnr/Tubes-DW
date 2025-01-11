@@ -454,44 +454,50 @@ function redirectToWhatsApp() {
 
 // Fungsi untuk mendapatkan tanggal dan waktu di zona waktu Bali
 function fetchCurrentDate() {
-    try {
-        const now = new Date();
-        const options = { timeZone: "Asia/Makassar" };
+    const API_URL = "https://worldtimeapi.org/api/timezone/Asia/Makassar";
 
-        // Format tanggal
-        const dayName = now.toLocaleString("id-ID", { weekday: "long", ...options });
-        const date = now.toLocaleString("id-ID", { day: "numeric", ...options });
-        const monthYear = now.toLocaleString("id-ID", { month: "long", year: "numeric", ...options });
+    fetch(API_URL)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Mengambil data dari API
+            const now = new Date(data.datetime); // Menggunakan data datetime dari API
+            const dayName = now.toLocaleString("id-ID", { weekday: "long" });
+            const date = now.toLocaleString("id-ID", { day: "numeric" });
+            const monthYear = now.toLocaleString("id-ID", { month: "long", year: "numeric" });
 
-        // Menampilkan tanggal
-        document.getElementById("day-name").textContent = dayName;
-        document.getElementById("date").textContent = date;
-        document.getElementById("month-year").textContent = monthYear;
+            // Menampilkan tanggal
+            document.getElementById("day-name").textContent = dayName;
+            document.getElementById("date").textContent = date;
+            document.getElementById("month-year").textContent = monthYear;
 
-        // Mulai memperbarui waktu
-        startClock();
-    } catch (error) {
-        console.error("Error saat memuat tanggal:", error);
-        document.getElementById("day-name").textContent = "Error";
-        document.getElementById("date").textContent = "--";
-        document.getElementById("month-year").textContent = "Gagal memuat tanggal.";
-    }
+            // Mulai memperbarui waktu
+            startClock(now);
+        })
+        .catch(error => {
+            console.error("Error saat memuat data dari API:", error);
+            document.getElementById("day-name").textContent = "Error";
+            document.getElementById("date").textContent = "--";
+            document.getElementById("month-year").textContent = "Gagal memuat tanggal.";
+        });
 }
 
 // Fungsi untuk memperbarui waktu setiap detik
-function startClock() {
+function startClock(initialTime) {
+    let currentTime = new Date(initialTime);
+
     setInterval(() => {
-        try {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString("id-ID", {
-                hour: "2-digit",
-                minute: "2-digit",
-                timeZone: "Asia/Makassar",
-            });
-            document.getElementById("time").textContent = timeString;
-        } catch (error) {
-            console.error("Error saat memperbarui waktu:", error);
-        }
+        currentTime.setSeconds(currentTime.getSeconds() + 1); // Menambah detik
+        const timeString = currentTime.toLocaleTimeString("id-ID", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+        });
+        document.getElementById("time").textContent = timeString;
     }, 1000);
 }
 
