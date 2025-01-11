@@ -1,65 +1,537 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking Villa</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAPPH VILLA - Booking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        /* Styling untuk tanggal yang dibooked */
+        .booked-date {
+            background-color: #ffdddd !important;
+            color: #b30000 !important;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-[#EDE7E0] text-[#574A21]">
 
-  <!-- Hero Section with Video Background -->
-  <section id="home" class="relative">
-    <div class="w-screen h-screen bg-black transition-opacity duration-1000 z-[-10]">
-      <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay loop muted playsinline>
-        <source src="https://videos.pexels.com/video-files/8306904/8306904-hd_1920_1080_25fps.mp4" type="video/mp4">
-      </video>
+    <!-- Header (Navbar) -->
+    <header id="navbar" class="bg-[#DDD0C0] fixed top-0 left-0 w-full z-50 shadow-md bg-opacity-60 backdrop-filter backdrop-blur-sm font-['Lusitana']">
+        <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+            <div>
+                <a href="index.html" class="hover:opacity-80">
+                    <img class="w-16" src="logo1.png" alt="Logo">
+                </a>
+            </div>
+            <div id="nav-links" class="hidden md:flex items-center space-x-20">
+                <a href="stay.html" class="text-[#574A21] hover:text-[#9C7701] transition duration-300 font-['Lusitana']">STAY</a>
+                <a href="about.html" class="text-[#574A21] hover:text-[#9C7701] transition duration-300 font-['Lusitana']">ABOUT</a>
+                <a href="#contact" class="text-[#574A21] hover:text-[#9C7701] transition duration-300 font-['Lusitana']">CONTACT US</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="book.html" class="bg-white text-[#574A21] px-5 py-2 rounded-full hover:bg-[#9C7701] hover:text-white transition duration-300 font-['Lusitana']">
+                    BOOK NOW
+                </a>
+                <ion-icon name="menu" onclick="onToggleMenu()" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+            </div>
+        </nav>
+
+            <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed right-0 w-[60%] h-[458px] bg-[#DDD0C0] z-40">
+        <div class="flex justify-end p-4">
+            <ion-icon name="close" onclick="onToggleMenu()" class="text-4xl cursor-pointer"></ion-icon>
+        </div>
+        <ul class="flex flex-col items-center space-y-8 mt-16">
+            <li><a href="stay.html" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">STAY</a></li>
+            <div class="w-[60%] h-1 bg-[#574A21] mx-auto my-4"></div>
+            <li><a href="about.html" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">ABOUT</a></li>
+            <div class="w-[60%] h-1 bg-[#574A21] mx-auto my-4"></div>
+            <li><a href="#contact" class="text-[#574A21] hover:text-[#9C7701] text-xl font-['Lusitana']">CONTACT US</a></li>
+        </ul>
     </div>
-    <div class="absolute inset-0 bg-black opacity-50"></div>
-  </section>
+    </header>
 
-  <!-- Booking Section -->
-  <section id="booking" class="container mx-auto mt-6 p-4 bg-[#EDE7E0] rounded-lg shadow-md">
-    <h2 class="text-2xl font-['Lusitana'] mb-4 text-center">Booking Villa</h2>
-    <form id="booking-form" class="space-y-4">
-      <!-- Input Cek-in -->
-      <div>
-        <label for="checkin" class="block text-lg font-['Lusitana'] mb-1">Tanggal Cek-in</label>
-        <input 
-          type="date" 
-          id="checkin" 
-          class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8b6f3d] focus:outline-none" 
-          required
-        />
-      </div>
+    <!-- Hero Section -->
+    <section class="h-screen bg-fixed bg-cover bg-center opacity-[85%] animate-slide-in" style="background-image: url('https://media.architecturaldigest.in/wp-content/uploads/2019/06/Bali-villa-Uluwatu-SAOTA.jpg');">
+        <div class="flex items-center justify-center h-full bg-opacity-50">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white font-['Orelega']">BOOK NOW</h1>
+        </div>
+    </section>
 
-      <!-- Input Cek-out -->
-      <div>
-        <label for="checkout" class="block text-lg font-['Lusitana'] mb-1">Tanggal Cek-out</label>
-        <input 
-          type="date" 
-          id="checkout" 
-          class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8b6f3d] focus:outline-none" 
-          required
-        />
-      </div>
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-10">
+        <!-- Title Section -->
+        <div class="text-center mb-10">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 font-['Orelega']">The Peak of Self-Serenity</h1>
+            <p class="text-base sm:text-lg md:text-xl text-gray-600 font-['Overpass']">
+                The perfect vacation is just one step away.<br />
+                A comfortable and fully equipped villa awaits you!<br />
+                Come and experience a new way of life.
+            </p>
+        </div>
 
-      <!-- Tombol Submit -->
-      <div class="text-center">
-        <button 
-          type="submit" 
-          class="bg-[#8b6f3d] text-white px-6 py-2 rounded-lg hover:bg-[#574A21] transition duration-300 transform hover:scale-105 shadow-lg">
-          Booking Sekarang
-        </button>
-      </div>
-    </form>
-
-    <!-- Tempat Menampilkan Hasil Booking -->
-    <div id="booking-result" class="mt-6 text-center text-lg font-['Lusitana'] text-[#574A21]"></div>
-  </section>
-
-  <script>
+        <!-- API -->
+        <div class="border rounded-lg p-4 bg-white w-full sm:w-[50%] lg:w-[30%] mx-auto">
+            <!-- Tanggal --> 
+            <div class="flex gap-2 items-center justify-center">
+                <div class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl" id="day-name">Memuat...</div>
+                <div class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl" id="date">--</div>
+                <div class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl" id="month-year">Memuat...</div>
+                <div class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl"> / </div>
+                <div class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl" id="time">--:--</div>
+            </div>
+            
+            <!-- Waktu -->
+                <div id="weather" class="mt-4 mb-2">
+                    <div class="flex items-center justify-center mb-2">
+                        <img id="weather-icon" class="w-6 sm:w-8 h-6 sm:h-8" alt="Ikon Cuaca">
+                    </div>
+                    <p id="weather-description" class="text-[#574A21] font-medium text-base sm:text-lg md:text-xl text-center">Memuat...</p>
+                    <p id="temperature" class="text-base sm:text-lg md:text-xl font-bold text-blue-600 text-center">-- °C</p>
+                </div>
+            </div>
+        </div>
+    </div>
     
-  </script>
+<!-- Container Villa Cards -->
+<div class="flex flex-col gap-8 p-4 sm:p-8 w-full xl:w-[85%] font-['Lusitana'] mx-auto">
+    <!-- Villa Card 1 -->
+    <div class="flex flex-col sm:flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-8">
+        <img src="https://asset.kompas.com/crops/5IVeE9MjpfvHfkC4ICmd1ySeP94=/125x63:875x563/1200x800/data/photo/2023/02/26/63fb51e0c37d2.jpg" alt="The Russi Villa" class="w-full sm:w-1/3 object-cover rounded-lg mb-4 sm:mb-0">
+        <div class="flex-1 flex flex-col sm:flex-row justify-between items-center sm:items-start sm:pl-6">
+            <div class="text-center sm:text-left">
+                <h2 class="text-xl sm:text-2xl font-semibold italic text-[#574A21] mb-4 sm:mb-16 sm:mt-4 xl:mb-32 xl:mt-12 xl:ml-10 xl:mr-32">The Russi Villa</h2>
+                <a href="russi.html" class="px-4 py-2 bg-white text-[#574A21] border border-[#574A21] hover:bg-[#D9A400] hover:text-white transition rounded-full xl:ml-10 xl:mb-56">MORE DETAIL</a>
+            </div>
+            <div class="text-center sm:text-right mt-4 sm:mt-0 xl:mr-16">
+                <p class="text-[#574A21] font-medium text-lg sm:text-xl mb-4 sm:mb-16 sm:mt-4 xl:mb-32 xl:mt-12">Rp <span class="text-red-600 font-bold">1.500.000</span> / Malam</p>
+                <button class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-full bookNowBtn" data-villa="The Russi Villa">BOOK NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Villa Card 2 -->
+    <div class="flex flex-col sm:flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-8">
+        <img src="http://pix3.agoda.net/hotelimages/680592/0/900ae1a932aaa7ee3c6b861111994a2e.jpg" alt="Villa Serenitas" class="w-full sm:w-1/3 object-cover rounded-lg mb-4 sm:mb-0">
+        <div class="flex-1 flex flex-col sm:flex-row justify-between items-center sm:items-start sm:pl-6">
+            <div class="text-center sm:text-left">
+                <h2 class="text-xl sm:text-2xl font-semibold italic text-[#574A21] mb-4 sm:mb-16 sm:mt-4 xl:mb-32 xl:mt-12 xl:ml-10 xl:mr-32">Villa Serenitas</h2>
+                <a href="serenitas.html" class="px-4 py-2 bg-white text-[#574A21] border border-[#574A21] hover:bg-[#D9A400] hover:text-white transition rounded-full xl:ml-10 xl:mb-56">MORE DETAIL</a>
+            </div>
+            <div class="text-center sm:text-right mt-4 sm:mt-0 xl:mr-16">
+                <p class="text-[#574A21] font-medium text-lg sm:text-xl mb-4 sm:mb-16 sm:mt-4 xl:mb-32 xl:mt-12">Rp <span class="text-red-600 font-bold">2.000.000</span> / Malam</p>
+                <button class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-full bookNowBtn" data-villa="Villa Serenitas">BOOK NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Villa Card 3 -->
+    <div class="flex flex-col sm:flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-8">
+        <img src="https://www.villadibali.net/villa-images/photo/villa-mewah-pemandangan-sawah-canggu_big.jpg" alt="Villa Panoramik" class="w-full sm:w-1/3 object-cover rounded-lg mb-4 sm:mb-0">
+        <div class="flex-1 flex flex-col sm:flex-row justify-between items-center sm:items-start sm:pl-6">
+            <div class="text-center sm:text-left">
+                <h2 class="text-xl sm:text-2xl font-semibold italic text-[#574A21] mb-4 sm:mb-16 sm:mt-4 xl:mb-32 xl:mt-12 xl:ml-10 xl:mr-32">Villa Panoramik</h2>
+                <a href="panoramik.html" class="px-4 py-2 bg-white text-[#574A21] border border-[#574A21] hover:bg-[#D9A400] hover:text-white transition rounded-full xl:ml-10 xl:mb-56">MORE DETAIL</a>
+            </div>
+            <div class="text-center sm:text-right mt-4 sm:mt-0 xl:mr-16">
+                <p class="text-[#574A21] font-medium text-lg sm:text-xl mb-4 sm:mb-16 sm:mt-4 xl:mb-32 xl:mt-12">Rp <span class="text-red-600 font-bold">2.500.000</span> / Malam</p>
+                <button class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-full bookNowBtn" data-villa="Villa Panoramik">BOOK NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Villa Card 4 -->
+    <div class="flex flex-col sm:flex-row shadow-lg rounded-lg overflow-hidden bg-[#FAF9F6] px-4 py-4 sm:px-6 sm:py-6 md:px-12 md:py-8">
+        <img src="https://www.villadibali.net/villa-images/photo/villa-6-kamar-tidur-mewah-nyaman-hanya-500-meter-pantai_big.jpg" alt="The Villa's" class="w-full sm:w-1/3 object-cover rounded-lg mb-4 sm:mb-0">
+        <div class="flex-1 flex flex-col sm:flex-row justify-between items-center sm:items-start sm:pl-6">
+            <div class="text-center sm:text-left">
+                <h2 class="text-xl sm:text-2xl font-semibold italic text-[#574A21] mb-4 sm:mb-16 sm:mt-4 xl:mb-32 xl:mt-12 xl:ml-10 xl:mr-32">The Villa's</h2>
+                <a href="The Villa's.html" class="px-4 py-2 bg-white text-[#574A21] border border-[#574A21] hover:bg-[#D9A400] hover:text-white transition rounded-full xl:ml-10 xl:mb-56">MORE DETAIL</a>
+            </div>
+            <div class="text-center sm:text-right mt-4 sm:mt-0 xl:mr-16">
+                <p class="text-[#574A21] font-medium text-lg sm:text-xl mb-4 sm:mb-16 sm:mt-4 xl:mb-32 xl:mt-12">Rp <span class="text-red-600 font-bold">3.000.000</span> / Malam</p>
+                <button class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-full bookNowBtn" data-villa="The Villa's">BOOK NOW</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Booking -->
+<div id="bookingModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center px-4">
+    <div class="bg-white rounded-lg p-6 w-full max-w-sm shadow-lg relative mt-18">
+        <button id="closeModal" class="absolute top-3 right-4 text-gray-600 text-xl hover:text-gray-800">&times;</button>
+        <h3 id="modalTitle" class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 text-center">Form Pemesanan - Villa</h3>
+        <form id="bookingForm" onsubmit="event.preventDefault(); sendBooking();">
+            <div class="mb-3">
+                <label for="nama" class="block text-gray-700 text-sm">Nama Lengkap</label>
+                <input type="text" id="nama" class="w-full border p-2 rounded-md" required>
+            </div>
+            <div class="mb-3">
+                <label for="telepon" class="block text-gray-700 text-sm">Nomor Telepon</label>
+                <input type="tel" id="telepon" class="w-full border p-2 rounded-md" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="block text-gray-700 text-sm">Email</label>
+                <input type="email" id="email" class="w-full border p-2 rounded-md" required>
+            </div>
+            <div class="mb-3">
+                <label for="checkin" class="block text-gray-700 text-sm">Tanggal Check-in</label>
+                <input type="text" id="checkin" class="w-full border p-2 rounded-md" required>
+            </div>
+            <div class="mb-3">
+                <label for="checkout" class="block text-gray-700 text-sm">Tanggal Check-out</label>
+                <input type="text" id="checkout" class="w-full border p-2 rounded-md" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">Kirim Pemesanan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Tombol untuk melihat struk -->
+<button id="lihatStrukBtn" class="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition hidden">
+  Lihat Struk
+</button>
+
+<!-- Modal Struk -->
+<div id="receiptModal" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center px-4">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <h2 id="villaName" class="text-xl font-semibold mb-4">Booking Receipt</h2>
+    <div id="bookingDetails" class="text-sm sm:text-lg">
+      <!-- Detail pemesanan akan ditampilkan di sini -->
+    </div>
+    <div class="flex flex-col sm:flex-row items-center justify-between mt-4">
+      <button id="dpBtn" class="px-4 py-2 bg-[#D9A400] text-white hover:bg-[#9C7701] transition rounded-lg mb-2 sm:mb-0" onclick="redirectToWhatsApp()">DP</button>
+      <button id="closeReceiptModal" class="bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Contact -->
+<footer id="contact" class="bg-[#DDD0C0] text-[#574A21] py-10">
+  <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+
+      <div class="flex flex-col items-center justify-center text-center space-y-4 md:w-1/3">
+          <img src="logo1.png" alt="Logo" class="h-16 mx-auto">
+          <div class="flex justify-center space-x-6">
+              <a href="https://www.instagram.com/divachyaaa" target="_blank" aria-label="Instagram">
+                  <img src="ig.png" alt="Instagram" class="h-8 w-8 hover:scale-110 transition-transform">
+              </a>
+              <a href="https://youtube.com/@divacahya4015" target="_blank" aria-label="YouTube">
+                  <img src="yt.png" alt="YouTube" class="h-8 w-8 hover:scale-110 transition-transform">
+              </a>
+              <a href="https://www.tiktok.com/@dwilliu" target="_blank" aria-label="TikTok">
+                  <img src="tiktok.png" alt="TikTok" class="h-8 w-8 hover:scale-110 transition-transform">
+              </a>
+          </div>
+      </div>
+
+      <div class="hidden md:block h-32 w-px bg-[#574A21]"></div>
+
+      <div class="text-center md:text-left md:w-1/3">
+          <h3 class="font-bold text-3xl mb-4 font-['Orelega'] text-center md:text-left">
+              Contact
+          </h3>
+          <p class="text-xl">
+              <a href="https://maps.app.goo.gl/1A8tiwkb8FiotBtf8" class="hover:text-[#9C7701] font-['Lusitana']">
+                  Alamat: JL. Raya Ubud
+              </a>
+          </p>
+          <p class="text-xl">
+              <a href="mailto:GAPPH.21@gmail.com" class="hover:text-[#9C7701] font-['Lusitana']">
+                  Email: GAPPH.21@gmail.com
+              </a>
+          </p>
+          <p class="text-xl font-['Lusitana']">No. Telepon: (021) 99123</p>
+      </div>
+  </div>
+
+  <!-- Footer Bawah -->
+  <div class="text-center text-sm mt-10 text-[#574A21] font-['Lusitana']">
+      ©️ 2024 GAPPH VILLA. All Rights Reserved
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+    const elementsToAnimate = document.querySelectorAll(".animate-slide-in");
+    elementsToAnimate.forEach((element) => {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(20px)";
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    element.style.transition = "opacity 1s ease-out, transform 1s ease-out";
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(element);
+    });
+});
+
+function onToggleMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+}
+
+    function closeMenuOnClick() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.add('hidden'); // Tambahkan kembali class "hidden"
+}
+
+// Tambahkan event listener ke semua tautan di dalam menu
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', closeMenuOnClick);
+});
+
+    const checkin = document.getElementById("checkin");
+    const checkout = document.getElementById("checkout");
+
+    flatpickr(checkin, {
+        minDate: "today",
+        dateFormat: "Y-m-d",
+    });
+
+    flatpickr(checkout, {
+        minDate: "today",
+        dateFormat: "Y-m-d",
+    });
+
+    const bookNowBtns = document.querySelectorAll(".bookNowBtn");
+    const bookingModal = document.getElementById("bookingModal");
+    const closeModal = document.getElementById("closeModal");
+
+    bookNowBtns.forEach(button => {
+        button.addEventListener("click", function() {
+            const villaName = button.getAttribute("data-villa");
+            document.getElementById("modalTitle").textContent = "Form Pemesanan - " + villaName;
+            bookingModal.classList.remove("hidden");
+        });
+    });
+
+    closeModal.addEventListener("click", function() {
+        bookingModal.classList.add("hidden");
+    });
+
+// Fungsi untuk mengirim pemesanan
+function sendBooking() {
+    const nama = document.getElementById("nama").value;
+    const telepon = document.getElementById("telepon").value;
+    const email = document.getElementById("email").value;
+    const checkinDate = document.getElementById("checkin").value;
+    const checkoutDate = document.getElementById("checkout").value;
+
+    if (nama && telepon && email && checkinDate && checkoutDate) {
+        Swal.fire({
+            title: 'Booking Successful!',
+            text: 'Your booking has been successfully processed.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            bookingModal.classList.add("hidden");
+
+            const villaName = document.getElementById("modalTitle").textContent.replace("Form Pemesanan - ", "");
+
+            const bookingData = {
+                villaName: villaName,
+                nama: nama,
+                telepon: telepon,
+                email: email,
+                checkinDate: checkinDate,
+                checkoutDate: checkoutDate
+            };
+
+            sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
+
+            document.getElementById("villaName").textContent = `Booking Receipt for: ${villaName}`;
+            document.getElementById("receiptModal").classList.remove("hidden");
+        });
+    }
+}
+//lihat struk
+function saveBookingData(bookingData) {
+    sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
+
+    sessionStorage.setItem('isBookingDone', 'true');
+
+    document.getElementById('lihatStrukBtn').classList.remove('hidden');
+}
+
+window.onload = function() {
+    const isBookingDone = sessionStorage.getItem('isBookingDone');
+    
+    if (isBookingDone === 'true') {
+        document.getElementById('lihatStrukBtn').classList.remove('hidden');
+    }
+};
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const bookingData = {
+        villaName: "The Russi Villa",
+        nama: "John Doe",
+        telepon: "123456789",
+        email: "johndoe@example.com",
+        checkinDate: "2024-12-25",
+        checkoutDate: "2024-12-30"
+    };
+
+    saveBookingData(bookingData);
+});
+
+document.getElementById('lihatStrukBtn').addEventListener('click', function() {
+    const bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
+
+    if (bookingData) {
+        document.getElementById('villaName').textContent = `Booking Receipt for: ${bookingData.villaName}`;
+        document.getElementById('bookingDetails').innerHTML = `
+            <p><strong>Nama Lengkap:</strong> ${bookingData.nama}</p>
+            <p><strong>Nomor Telepon:</strong> ${bookingData.telepon}</p>
+            <p><strong>Email:</strong> ${bookingData.email}</p>
+            <p><strong>Tanggal Check-in:</strong> ${bookingData.checkinDate}</p>
+            <p><strong>Tanggal Check-out:</strong> ${bookingData.checkoutDate}</p>
+        `;
+
+        document.getElementById("receiptModal").classList.remove("hidden");
+    } else {
+        alert("Belum ada pemesanan yang dilakukan.");
+    }
+});
+
+document.getElementById('closeReceiptModal').addEventListener('click', function() {
+    document.getElementById("receiptModal").classList.add("hidden");
+});
+
+function checkBookingStatus() {
+    const bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
+
+    if (bookingData) {
+        const currentDate = new Date();
+        const checkoutDate = new Date(bookingData.checkoutDate);
+
+        if (currentDate > checkoutDate) {
+            document.getElementById('lihatStrukBtn').classList.add('hidden');
+        } else {
+            document.getElementById('lihatStrukBtn').classList.remove('hidden');
+        }
+    }
+}
+
+//wa
+document.addEventListener('DOMContentLoaded', function() {
+    checkBookingStatus();
+});
+function redirectToWhatsApp() {
+    const bookingData = JSON.parse(sessionStorage.getItem('bookingData'));
+    
+    if (bookingData) {
+        const message = `Hello, I would like to make a down payment for my booking at ${bookingData.villaName}. Please let me know the payment details.`;
+        
+        const phoneNumber = "+6289665536464"; 
+        const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        
+        window.open(whatsappLink, '_blank');
+    } else {
+        alert('No booking data found.');
+    }
+}
+
+// Fungsi untuk mendapatkan tanggal dan waktu di zona waktu Bali
+function fetchCurrentDate() {
+    try {
+        const now = new Date();
+        const options = { timeZone: "Asia/Makassar" };
+
+        // Format tanggal
+        const dayName = now.toLocaleString("id-ID", { weekday: "long", ...options });
+        const date = now.toLocaleString("id-ID", { day: "numeric", ...options });
+        const monthYear = now.toLocaleString("id-ID", { month: "long", year: "numeric", ...options });
+
+        // Menampilkan tanggal
+        document.getElementById("day-name").textContent = dayName;
+        document.getElementById("date").textContent = date;
+        document.getElementById("month-year").textContent = monthYear;
+
+        // Mulai memperbarui waktu
+        startClock();
+    } catch (error) {
+        console.error("Error saat memuat tanggal:", error);
+        document.getElementById("day-name").textContent = "Error";
+        document.getElementById("date").textContent = "--";
+        document.getElementById("month-year").textContent = "Gagal memuat tanggal.";
+    }
+}
+
+// Fungsi untuk memperbarui waktu setiap detik
+function startClock() {
+    setInterval(() => {
+        try {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString("id-ID", {
+                hour: "2-digit",
+                minute: "2-digit",
+                timeZone: "Asia/Makassar",
+            });
+            document.getElementById("time").textContent = timeString;
+        } catch (error) {
+            console.error("Error saat memperbarui waktu:", error);
+        }
+    }, 1000);
+}
+
+// Kunci API WeatherAPI (ganti dengan API Key Anda)
+const API_KEY = "b220eb96d5e54d2e86d141136242912";
+const LOCATION = "Bali";
+
+// Fungsi untuk mendapatkan cuaca di Bali
+async function fetchWeather() {
+    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${LOCATION}&lang=id`;
+
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error("Gagal mengambil data cuaca");
+
+        const data = await response.json();
+        const description = data.current.condition.text;
+        const temperature = data.current.temp_c.toFixed(1); // Suhu dalam Celsius
+        const weatherIcon = data.current.condition.icon; // Ikon cuaca
+
+        // Menampilkan cuaca
+        document.getElementById("weather-description").textContent = description;
+        document.getElementById("temperature").textContent = `${temperature} °C`;
+
+        // Menampilkan ikon cuaca
+        document.getElementById("weather-icon").src = `https:${weatherIcon}`;
+    } catch (error) {
+        console.error("Error saat memuat cuaca:", error);
+        document.getElementById("weather-description").textContent = "Gagal memuat cuaca.";
+        document.getElementById("temperature").textContent = "-- °C";
+    }
+}
+
+// Panggil fungsi saat halaman dimuat
+document.addEventListener("DOMContentLoaded", () => {
+    fetchCurrentDate();
+    fetchWeather();
+});
+
+</script>
+
 </body>
 </html>
